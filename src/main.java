@@ -10,7 +10,7 @@ public class main {
         int currentFrame = 0;
 
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setUndecorated(true);
+        //window.setUndecorated(true);
         window.setResizable(false);
         window.setTitle("Pong");
 
@@ -22,6 +22,7 @@ public class main {
 
         int i = 1;
         while (i == 1) {
+            System.out.println("ii");
             currentFrame++;
             gamePanel.nextFrame();
             try {

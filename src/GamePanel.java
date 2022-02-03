@@ -3,12 +3,12 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
     //settings
-    final int ORIGINALTILESIZE = 16;
-    final int SCALE = 2;
-    final int TILESIZE = ORIGINALTILESIZE * SCALE;
+    //final static int ORIGINALTILESIZE = 16;
+    //final static int SCALE = 2;
+    //final static int TILESIZE = ORIGINALTILESIZE * SCALE;
 
-    final int SCREENWIDTH = 1920;
-    final int SCREENHEIGHT = 1080;
+    final static int SCREENWIDTH = 1920;
+    final static int SCREENHEIGHT = 1080;
 
     Paddle redPaddle, bluePaddle;
     Ball ball;
@@ -34,10 +34,11 @@ public class GamePanel extends JPanel {
 
     @Override
     public void paintComponents(Graphics g) {
-        Graphics2D draw = (Graphics2D) g;
+        Graphics2D draw = (Graphics2D)g;
 
+        System.out.println("123");
         draw.setColor(Color.BLACK);
-        draw.fillRect(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        draw.fillRect(0, 0, 100, 100);
 
         redPaddle.paintComponent(g);
         bluePaddle.paintComponent(g);
@@ -50,8 +51,5 @@ public class GamePanel extends JPanel {
         TBall.stop();
     }
 
-    public void nextFrame() {
-        this.repaint();
-    }
-
+    public void nextFrame() {repaint();}
 }
