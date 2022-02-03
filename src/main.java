@@ -20,12 +20,16 @@ public class main {
 
         window.setVisible(true);
 
-        while (true) {
+        int i = 1;
+        while (i == 1) {
             currentFrame++;
             gamePanel.nextFrame();
             try {
                 Thread.sleep(1000/FPS);
             } catch (Exception e) {}
         }
+
+        gamePanel.stopThread();
+
     }
 }
