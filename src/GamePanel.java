@@ -17,10 +17,10 @@ public class GamePanel extends JPanel {
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(SCREENWIDTH, SCREENHEIGHT));
-        this.setDoubleBuffered(true);
+        //this.setDoubleBuffered(true);
 
-        redPaddle = new Paddle(250, new Color(255, 0, 0));
-        bluePaddle = new Paddle(SCREENWIDTH - 250 - 25, new Color(0, 0, 255));
+        redPaddle = new Paddle(250, 150, Paddle.ContactSide.right, false, new Color(255, 0, 0));
+        bluePaddle = new Paddle(SCREENWIDTH - 250 - 25, 150, Paddle.ContactSide.left, true, new Color(0, 0, 255));
         ball = new Ball();
 
         TRedPaddle = new Thread(redPaddle);
@@ -33,12 +33,11 @@ public class GamePanel extends JPanel {
     }
 
     @Override
-    public void paintComponents(Graphics g) {
+    public void paintComponent(Graphics g) {
         Graphics2D draw = (Graphics2D)g;
 
-        System.out.println("123");
         draw.setColor(Color.BLACK);
-        draw.fillRect(0, 0, 100, 100);
+        draw.fillRect(0, 0, SCREENWIDTH, SCREENHEIGHT);
 
         redPaddle.paintComponent(g);
         bluePaddle.paintComponent(g);

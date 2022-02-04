@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Ball extends JComponent implements Runnable {
+    final int BALLDIAMETER = 50;
     int x, y;
     int vx, vy;
 
@@ -10,8 +11,8 @@ public class Ball extends JComponent implements Runnable {
         y = GamePanel.SCREENHEIGHT/2;
 
         //the amount of pixels moved every 10 mills
-        vx = -1;
-        vy = 0;
+        vx = 50;
+        vy = 50;
     }
 
     @Override
@@ -19,7 +20,7 @@ public class Ball extends JComponent implements Runnable {
         Graphics2D draw = (Graphics2D)g;
 
         draw.setColor(Color.WHITE);
-        draw.fillOval(x, y, 50, 50);
+        draw.fillOval(x, y, BALLDIAMETER, BALLDIAMETER);
     }
 
     @Override
@@ -27,6 +28,13 @@ public class Ball extends JComponent implements Runnable {
         while (true) {
             x += vx;
             y += vy;
+
+            if (this.x <= 0 || this.x >= GamePanel.SCREENWIDTH - BALLDIAMETER) {
+                vx = -vx;
+            }
+            if (this.y <= 0 || this.y >= GamePanel.SCREENHEIGHT - BALLDIAMETER) {
+                vy = -vy;
+            }
 
             this.nextFrame();
 
