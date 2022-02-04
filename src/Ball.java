@@ -11,8 +11,8 @@ public class Ball extends JComponent implements Runnable {
         y = GamePanel.SCREENHEIGHT/2;
 
         //the amount of pixels moved every 10 mills
-        vx = 50;
-        vy = 50;
+        vx = 5;
+        vy = 5;
     }
 
     @Override

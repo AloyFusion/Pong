@@ -6,7 +6,7 @@ public class main {
         JFrame window = new JFrame();
         GamePanel gamePanel = new GamePanel();
 
-        final int FPS = 60;
+        final int FPS = 4246;
         int currentFrame = 0;
 
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

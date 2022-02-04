@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Paddle extends JComponent implements Runnable { //paddle thickness is 25 pixels
-     Point CursorPos;
+     Point cursorPos;
 
-     int ContactX;
+     int contactX;
      int xPos, yPos;
      int height;
 
@@ -17,14 +17,16 @@ public class Paddle extends JComponent implements Runnable { //paddle thickness 
           this.xPos = x;
           this.height = height;
           this.yPos = GamePanel.SCREENHEIGHT/2;
-          this.ContactX = 0;
+          this.contactX = 0;
           this.bot = bot;
           this.color = color;
 
           if (ContactSide == Paddle.ContactSide.right) {
-               ContactX = 25;
+               contactX = 25;
           }
      }
+
+     //public void setCursorPos(Point CursorPos) {this.CursorPos = CursorPos;}
 
      @Override
      public void paintComponent(Graphics g) {
@@ -44,12 +46,10 @@ public class Paddle extends JComponent implements Runnable { //paddle thickness 
           }
           else {
                while (true) {
-                    CursorPos = getMousePosition();
-                    try {
-                     yPos = CursorPos.y;
-                    } catch (NullPointerException e) {
-                         System.out.println("help");
-                    }
+                    cursorPos = MouseInfo.getPointerInfo().getLocation();
+                    yPos = cursorPos.y;
+                    //System.out.print("(" + cursorPos.x + "," + cursorPos.y + "0");
+
                     nextFrame();
                }
           }
