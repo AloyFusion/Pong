@@ -21,7 +21,7 @@ public class GamePanel extends JPanel {
 
         redPaddle = new Paddle(250, 150, Paddle.ContactSide.right, false, new Color(255, 0, 0));
         bluePaddle = new Paddle(SCREENWIDTH - 250 - 25, 150, Paddle.ContactSide.left, true, new Color(0, 0, 255));
-        ball = new Ball();
+        ball = new Ball(redPaddle, bluePaddle);
 
         TRedPaddle = new Thread(redPaddle);
         TBluePaddle = new Thread(bluePaddle);

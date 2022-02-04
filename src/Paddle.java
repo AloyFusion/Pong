@@ -41,13 +41,13 @@ public class Paddle extends JComponent implements Runnable { //paddle thickness 
           if (bot) {
               while (true) {
 
-                 nextFrame();
+                   nextFrame();
               }
           }
           else {
                while (true) {
                     cursorPos = MouseInfo.getPointerInfo().getLocation();
-                    yPos = cursorPos.y;
+                    yPos = cursorPos.y - height / 2;
                     //System.out.print("(" + cursorPos.x + "," + cursorPos.y + "0");
 
                     nextFrame();

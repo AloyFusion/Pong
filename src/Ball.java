@@ -2,13 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Ball extends JComponent implements Runnable {
+    Paddle paddle1, paddle2;
     final int BALLDIAMETER = 50;
     int x, y;
     int vx, vy;
 
-    public Ball() {
+    public Ball(Paddle paddle1, Paddle paddle2) {
         x = GamePanel.SCREENWIDTH/2;
         y = GamePanel.SCREENHEIGHT/2;
+
+        this.paddle1 = paddle1;
+        this.paddle2 = paddle2;
 
         //the amount of pixels moved every 10 mills
         vx = 5;
@@ -26,15 +30,17 @@ public class Ball extends JComponent implements Runnable {
     @Override
     public void run() {
         while (true) {
-            x += vx;
-            y += vy;
-
-            if (this.x <= 0 || this.x >= GamePanel.SCREENWIDTH - BALLDIAMETER) {
+            if (this.x <= 0 || this.x >= GamePanel.SCREENWIDTH - BALLDIAMETER ||
+                    (this.x == paddle1.xPos && this.y == paddle2.yPos) || (this.x == paddle2.xPos && this.y == paddle2.yPos) ) {
                 vx = -vx;
             }
+
             if (this.y <= 0 || this.y >= GamePanel.SCREENHEIGHT - BALLDIAMETER) {
                 vy = -vy;
             }
+
+            x += vx;
+            y += vy;
 
             this.nextFrame();
 
