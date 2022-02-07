@@ -10,7 +10,7 @@ public class GamePanel extends JPanel {
     final static int SCREENWIDTH = 1920;
     final static int SCREENHEIGHT = 1080;
 
-    Paddle redPaddle, bluePaddle, aaa;
+    Paddle redPaddle, bluePaddle;//, aaa;
     Ball ball;
 
     Thread TRedPaddle, TBluePaddle, TBall, aaaa;
@@ -19,19 +19,19 @@ public class GamePanel extends JPanel {
         this.setPreferredSize(new Dimension(SCREENWIDTH, SCREENHEIGHT));
         //this.setDoubleBuffered(true);
 
-        redPaddle = new Paddle(250, 1000, Paddle.ContactSide.right, false, new Color(255, 0, 0));
-        bluePaddle = new Paddle(SCREENWIDTH - 250 - 25, 1000, Paddle.ContactSide.left, false, new Color(0, 0, 255));
-        aaa = new Paddle(SCREENWIDTH/2 - 12, 250, Paddle.ContactSide.right, false, Color.CYAN);
-        ball = new Ball(redPaddle, bluePaddle, aaa);
+        redPaddle = new Paddle(250, 200, Paddle.ContactSide.right, false, new Color(255, 0, 0));
+        bluePaddle = new Paddle(SCREENWIDTH - 250 - 25, 200, Paddle.ContactSide.left, false, new Color(0, 0, 255));
+        //aaa = new Paddle(SCREENWIDTH/2 - 12, 250, Paddle.ContactSide.right, false, Color.CYAN);
+        ball = new Ball(redPaddle, bluePaddle/*, aaa*/);
 
         TRedPaddle = new Thread(redPaddle);
         TBluePaddle = new Thread(bluePaddle);
-        aaaa = new Thread(aaa);
+        //aaaa = new Thread(aaa);
         TBall = new Thread(ball);
 
         TRedPaddle.start();
         TBluePaddle.start();
-        aaaa.start();
+        //aaaa.start();
         TBall.start();
     }
 
@@ -59,7 +59,7 @@ public class GamePanel extends JPanel {
 
         redPaddle.paintComponent(g);
         bluePaddle.paintComponent(g);
-        aaa.paintComponent(g);
+        //aaa.paintComponent(g);
         ball.paintComponent(g);
     }
 

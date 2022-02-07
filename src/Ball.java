@@ -7,13 +7,13 @@ public class Ball extends JComponent implements Runnable {
     int x, y;
     int vx, vy;
 
-    public Ball(Paddle paddle1, Paddle paddle2, Paddle aaa) {
+    public Ball(Paddle paddle1, Paddle paddle2 /*Paddle aaa*/) {
         x = GamePanel.SCREENWIDTH/2;
         y = GamePanel.SCREENHEIGHT/2;
 
         this.paddle1 = paddle1;
         this.paddle2 = paddle2;
-        this.aaa = aaa;
+        //this.aaa = aaa;
 
         //the amount of pixels moved every 10 mills
         vx = 5;
@@ -40,13 +40,17 @@ public class Ball extends JComponent implements Runnable {
     public void run() {
         while (true) {
             if ((this.x == paddle1.xPos + 25 && this.y >= paddle1.yPos + 25 && this.y <= paddle1.yPos + paddle1.height + 25) ||
-                    (this.x == paddle2.xPos - 50 && this.y >= paddle2.yPos + 25 && this.y <= paddle2.yPos + paddle2.height + 25) ||
-                    (this.x == aaa.xPos -50 && this.y >= aaa.yPos + 25 && this.y <= aaa.yPos + aaa.height + 25)) {
+                    (this.x == paddle2.xPos - 50 && this.y >= paddle2.yPos + 25 && this.y <= paddle2.yPos + paddle2.height + 25)// ||
+                    //(this.x == aaa.xPos -50 && this.y >= aaa.yPos + 25 && this.y <= aaa.yPos + aaa.height + 25)
+                    ) {
                 vx = -vx;
             }
 
             if (this.y <= 0 || this.y >= GamePanel.SCREENHEIGHT - BALLDIAMETER) {
                 vy = -vy;
+            }
+            if (this.x < 0 || this.x > GamePanel.SCREENWIDTH) {
+                vx = -vx;
             }
 
             /*
